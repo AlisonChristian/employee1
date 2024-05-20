@@ -1,7 +1,7 @@
-            <div class="left side-menu">
-                <div class="slimscroll-menu" id="remove-scroll">
+            <div class="left side-menu" style="background-color: #738999;">
+                <div class="slimscroll-menu">
 
-                    <div id="sidebar-menu">
+                    <div id="sidebar-menu" >
                         
                         <ul class="metismenu" id="side-menu">
                             <li class="menu-title">Main</li>
@@ -59,12 +59,6 @@
                                     <i class="dripicons-alarm"></i> <span> Over Time </span>
                                 </a>
                             </li> 
-                            <li class="menu-title">Tools</li>
-                            <li class="">
-                                <a href="{{ route("finger_device.index") }}" class="waves-effect {{ request()->is("finger_device") || request()->is("finger_device/*") ? "mm active" : "" }}">
-                                    <i class="fas fa-fingerprint"></i> <span> Biometric Device </span>
-                                </a>
-                            </li>
                         </ul>
                     </div>
                     <div class="clearfix"></div>

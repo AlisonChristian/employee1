@@ -55,7 +55,7 @@ TABLES OF CSS
 ===================*/
 body {
   background-repeat: repeat;
-  background: #f8f8fa;
+  background: #E6E7E7;
   font-family: "Roboto", sans-serif;
   color: #5b626b;
   font-size: 14px;
@@ -708,7 +708,7 @@ dt {
 }
 
 .side-menu .waves-effect .waves-ripple {
-  background-color: rgba(51, 53, 71, 0.4);
+  background-color:   rgba(51, 53, 71, 0.4);
 }
 
 .enlarged .side-menu {
@@ -779,7 +779,6 @@ dt {
 
 #sidebar-menu > ul > li > a.mm-active {
   color: #b4c9de !important;
-  background-color: #383b4e;
 }
 
 .menu-title {

@@ -58,18 +58,18 @@ Route::group(['middleware' => ['auth']], function () {
 
 });
 
-// Route::get('/attendance/assign', function () {
-//     return view('attendance_leave_login');
-// })->name('attendance.login');
+Route::get('/attendance/assign', function () {
+    return view('attendance_leave_login');
+})->name('attendance.login');
 
-// Route::post('/attendance/assign', '\App\Http\Controllers\AttendanceController@assign')->name('attendance.assign');
-
-
-// Route::get('/leave/assign', function () {
-//     return view('attendance_leave_login');
-// })->name('leave.login');
-
-// Route::post('/leave/assign', '\App\Http\Controllers\LeaveController@assign')->name('leave.assign');
+Route::post('/attendance/assign', '\App\Http\Controllers\AttendanceController@assign')->name('attendance.assign');
 
 
-// Route::get('{any}', 'App\http\controllers\VeltrixController@index');
+Route::get('/leave/assign', function () {
+    return view('attendance_leave_login');
+})->name('leave.login');
+
+Route::post('/leave/assign', '\App\Http\Controllers\LeaveController@assign')->name('leave.assign');
+
+
+Route::get('{any}', 'App\http\controllers\VeltrixController@index');

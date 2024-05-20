@@ -1,12 +1,12 @@
 <div class="topbar">
 
-<div class="topbar-left">
+<div class="topbar-left" style="background-color: #738999;">
     <a href="/" class="logo">
         <span>
-                <h1 style="color: white; ">E A M S</h1>
+                <h1 style="color: white; ">V E A M S</h1>
             </span>
         <i>
-            <h1>E</h1>
+             <img src="../assets/images/Frame 1.png" alt="Logo" style="height: 50px;">
             </i>
     </a>
 </div>
@@ -16,12 +16,12 @@
         <li class="dropdown notification-list">
             <div class="dropdown notification-list nav-pro-img">
                 <a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="assets/images/profile-icon.png" alt="user" class="rounded-circle"> Administrator
+                    <img src="assets/images/profile-icon.png" alt="user" class="rounded-circle">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();"><i class="mdi mdi-power text-danger"></i> {{ __('Logout') }}</a>
+                    <a class="dropdown-item text-info" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"><i class="mdi mdi-power text-info"></i> {{ __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
