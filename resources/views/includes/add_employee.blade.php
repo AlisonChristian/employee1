@@ -13,46 +13,47 @@
 
             
             <div class="modal-body">
-			<!-- Log on to codeastro.com for more projects! -->
 
                 <div class="card-body text-left">
 
                     <form method="POST" action="{{ route('employees.store') }}">
                         @csrf
                         <div class="form-group">
-                            <label for="name">Name <i>{without any space}</i></label>
-                            <input type="text" class="form-control" placeholder="Enter a Employee name [hyphen accepted]" id="name" name="name"
+                            <label for="name">Fullname</label>
+                            <input type="text" class="form-control" id="name" name="name"
                                 required />
                         </div>
                         <div class="form-group">
-                            <label for="position">Position <i>{without any space}</i></label>
-                            <input type="text" class="form-control" placeholder="Enter Employee's Position [hyphen accepted]" id="position" name="position"
-                                required />
-                        </div>
-
-                        
-                        <div class="form-group"><!-- Log on to codeastro.com for more projects! -->
-                            <label for="email" class="col-sm-3 control-label">Email</label>
-
-
-                            <input type="email" class="form-control" id="email" name="email">
-
-                        </div>
-                        <div class="form-group">
-                            <label for="schedule" class="col-sm-3 control-label">Schedule</label>
-
-
-                            <select class="form-control" id="schedule" name="schedule" required>
-                                <option value="" selected>- Select -</option>
-                                @foreach($schedules as $schedule)
-                                <option value="{{$schedule->slug}}">{{$schedule->slug}} -> from {{$schedule->time_in}}
-                                    to {{$schedule->time_out}} </option>
-                                @endforeach
-
+                            <label for="department">Department</label>
+                            <select class="form-control" id="department" name="department" required>
+                                <option value="" disabled selected>Select your department</option>
+                                <option value="admin">Admin</option>
+                                <option value="teacher">Teacher</option>
+                                <option value="accounting">Accounting</option>
+                                <option value="staff">Staff</option>
                             </select>
-
                         </div>
-
+                        <div class="form-group">
+                            <label for="phone_number">Email</label>
+                            <input type="email" class="form-control" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone_number">Phone Number</label>
+                            <input type="number" class="form-control" placeholder="+63" id="phone_number" name="phone_number">
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select class="form-control" id="gender" name="gender" required>
+                                <option value="" disabled selected>Select your gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" class="form-control" id="address" name="address">
+                        </div>
                         <div class="form-group">
                             <div>
                                 <button type="submit" class="btn btn-success waves-effect waves-light">
@@ -67,8 +68,6 @@
 
                 </div>
             </div>
-			<!-- Log on to codeastro.com for more projects! -->
-
         </div>
 
     </div>

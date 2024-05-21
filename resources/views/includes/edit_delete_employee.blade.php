@@ -38,20 +38,6 @@
                             value="{{ $employee->email }}" >
 
                     </div>
-                    <div class="form-group">
-                        <label for="schedule" class="col-sm-3 control-label">Schedule</label>
-
-
-                        <select class="form-control" id="schedule" name="schedule" required>
-                            <option value="" selected>- Select -</option>
-                            @foreach ($schedules as $schedule)
-                                <option value="{{ $schedule->slug }}">{{ $schedule->slug }} -> from
-                                    {{ $schedule->time_in }} to {{ $schedule->time_out }} </option>
-                            @endforeach
-
-                        </select>
-
-                    </div>
 
             </div>
             <div class="modal-footer">

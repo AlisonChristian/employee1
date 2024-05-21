@@ -14,18 +14,19 @@ class CreateEmployeesTable extends Migration
     public function up()
     {
         Schema::create('employees', function (Blueprint $table) {
-          
-            $table->Increments('id')->from(111)->unsigned();
+            $table->uuid('id')->primary();
+            $table->uuid('employee_id');
             $table->string('name');
-            $table->string('position');
+            $table->string('department');
             $table->string('email')->nullable()->unique();
+            $table->string('phone_number')->nullable(); // Add phone_number column
             $table->string('pin_code')->nullable();
-            $table->text('permissions')->nullable();
+            $table->string('gender')->nullable(); // Add gender column
+            $table->string('address')->nullable(); // Add address column
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
-        
     }
 
     /**

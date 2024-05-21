@@ -35,11 +35,10 @@
                                                     <tr>
                                                         <th data-priority="1">ID</th>
                                                         <th data-priority="2">Name</th>
-                                                        <th data-priority="3">Position</th>
+                                                        <th data-priority="3">Department</th>
                                                         <th data-priority="4">Email</th>
-                                                        <th data-priority="5">Schedule</th>
-                                                        <th data-priority="6">Member Since</th>
-                                                        <th data-priority="7">Actions</th>
+                                                        <th data-priority="5">Date/Time</th>
+                                                        <th data-priority="6">Actions</th>
                                                      
                                                     </tr>
                                                     </thead>
@@ -49,13 +48,8 @@
                                                         <tr>
                                                             <td>{{$employee->id}}</td>
                                                             <td>{{$employee->name}}</td>
-                                                            <td>{{$employee->position}}</td>
+                                                            <td>{{$employee->department}}</td>
                                                             <td>{{$employee->email}}</td>
-                                                            <td>
-                                                                @if(isset($employee->schedules->first()->slug))
-                                                                {{$employee->schedules->first()->slug}}
-                                                                @endif
-                                                            </td>
                                                             <td>{{$employee->created_at}}</td>
                                                             <td>
                         

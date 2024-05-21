@@ -5,53 +5,53 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\Uuids;
 
 class Employee extends Model
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, Uuids;
     
-    public function getRouteKeyName()
-    {
-        return 'name';
-    }
-    protected $table = 'employees';
     protected $fillable = [
-        'name', 'email', 'pin_code'
+        'employee_id',
+        'name',
+        'department', 
+        'email', 
+        'phone_number', 
+        'gender',
+        'address'
     ];
 
-  
     protected $hidden = [
         'pin_code', 'remember_token',
     ];
 
+    public function schedules()
+    {
+        return $this->belongsToMany(Schedule::class, 'schedule_employees', 'emp_id', 'schedule_id');
+    }
 
-    public function check()
+    public function checks()
     {
         return $this->hasMany(Check::class);
     }
 
-    public function attendance()
+    public function attendances()
     {
         return $this->hasMany(Attendance::class);
     }
-    public function latetime()
+
+    public function latetimes()
     {
         return $this->hasMany(Latetime::class);
     }
-    public function leave()
+
+    public function leaves()
     {
         return $this->hasMany(Leave::class);
     }
-    public function overtime()
+
+    public function overtimes()
     {
         return $this->hasMany(Overtime::class);
     }
-    public function schedules()
-    {
-        return $this->belongsToMany('App\Models\Schedule', 'schedule_employees', 'emp_id', 'schedule_id');
-    }
-
-
-    
-
 }
