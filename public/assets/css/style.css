@@ -668,7 +668,7 @@ dt {
 }
 
 .navbar-custom {
-  background-color: #ececf1;
+  background-color: #D9D9D9;
   border-radius: 0;
   margin-bottom: 0;
   padding: 0 10px 0 0;
@@ -732,7 +732,7 @@ dt {
   display: inline-block;
   height: 70px;
   width: 60px;
-  background-color: #ececf1;
+  background-color: #D9D9D9;
   font-size: 24px;
 }
 
@@ -898,7 +898,7 @@ dt {
 }
 
 .enlarged #wrapper .left.side-menu #sidebar-menu ul ul li.mm-active a {
-  color: #ffffff;
+  color: #D9D9D9;
 }
 
 .enlarged #wrapper .left.side-menu #sidebar-menu ul > li > a span {
@@ -947,7 +947,7 @@ dt {
   text-align: center !important;
   padding: 19px 30px 20px;
   position: absolute;
-  background-color: #f1f2f5;
+  background-color: #D9D9D9;
   right: 0;
   left: 240px;
   font-family: "Sarabun", sans-serif;
@@ -1179,8 +1179,8 @@ button:focus {
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle,
 .btn-outline-primary:not([disabled]):not(.disabled).active, .btn-outline-primary:not([disabled]):not(.disabled):active,
 .show > .btn-outline-primary.dropdown-toggle {
-  background-color: #4e5ccf;
-  border: 1px solid #4e5ccf;
+  background-color: #2BA84E;
+  border: 1px solid #2BA84E;
 }
 
 .btn-primary.focus, .btn-primary:focus, .btn-outline-primary.focus, .btn-outline-primary:focus,
@@ -1198,8 +1198,8 @@ button:focus {
 }
 
 .btn-success {
-  background-color: #02a499;
-  border: 1px solid #02a499;
+  background-color: #0769B2;
+  border: 1px solid #0769B2;
 }
 
 .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active,
@@ -1279,8 +1279,8 @@ button:focus {
 .btn-danger:active, .show > .btn-danger.dropdown-toggle,
 .btn-danger:not(:disabled):not(.disabled).active, .btn-danger:not(:disabled):not(.disabled):active, .show > .btn-danger.dropdown-toggle,
 .btn-outline-danger:not([disabled]):not(.disabled).active, .btn-outline-danger:not([disabled]):not(.disabled):active, .show > .btn-outline-danger.dropdown-toggle {
-  background-color: #ea2e4d;
-  border: 1px solid #ea2e4d;
+  background-color: #b30c28;
+  border: 1px solid #b30c28;
 }
 
 .btn-danger.focus, .btn-danger:focus, .btn-outline-danger.focus, .btn-outline-danger:focus,

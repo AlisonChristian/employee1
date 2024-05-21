@@ -39,12 +39,17 @@ class User extends Authenticatable
 
     public static function hasRole($role)
     {
-        if (auth()->user()->roles()->first()->slug === $role) {
-            return true;
+        $user = auth()->user();
+
+        if ($user && $user->roles()->exists()) {
+            return $user->roles()->first()->slug === $role;
         }
+        
         return false;
     }
 
+
+    
 
     protected $fillable = [
         'name', 'email', 'password', 'pin_code',
