@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\Uuids;
+use App\Traits;
 
 class Employee extends Model
 {
-    use HasFactory, Notifiable, Uuids;
+    use HasFactory, Notifiable;
     
     protected $fillable = [
         'employee_id',

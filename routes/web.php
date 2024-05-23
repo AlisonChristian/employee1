@@ -3,6 +3,7 @@
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\FingerDevicesControlller;
     use Illuminate\Support\Facades\Auth;
+    use App\Http\Controllers\LeaveController;
 
     Route::get('/', function () {
         return view('welcome');
@@ -59,3 +60,7 @@
     Route::post('/leave/assign', '\App\Http\Controllers\LeaveController@assign')->name('leave.assign');
 
     Route::get('{any}', 'App\Http\Controllers\VeltrixController@index');
+
+    Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('leave', LeaveController::class);
+    });

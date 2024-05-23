@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\Uuids;
+use App\Traits;
 
 class Employee_ids extends Model
 {
-    use HasFactory, Uuids;
+    use HasFactory;
 
     protected $fillable = [
         'emp_id',

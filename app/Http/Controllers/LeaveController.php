@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use DateTime;
 use App\Models\User;
 use App\Models\Employee;
@@ -17,6 +18,30 @@ class LeaveController extends Controller
     public function index()
     {
         return view('admin.leave')->with(['leaves' => Leave::all()]);
+    }
+
+    public function store(Request $request)
+    {
+        // Validate the request data
+        $request->validate([
+            'employee_id' => 'required|exists:employees,id',
+            'leave_type' => 'required|string',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+            'reason' => 'nullable|string',
+        ]);
+
+        // Create a new leave request
+        Leave::create([
+            'employee_id' => $request->employee_id,
+            'leave_type' => $request->leave_type,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'reason' => $request->reason,
+            'status' => 'pending',
+        ]);
+
+        return redirect()->route('admin.leave.index')->with('success', 'Leave request submitted successfully.');
     }
 
     public function indexOvertime()
@@ -37,6 +62,7 @@ class LeaveController extends Controller
     //     $overtime->overtime_date = date('Y-m-d');
     //     $overtime->save();
     // }
+    
     public static function overTimeDevice($att_dateTime, Employee $employee)
     {
         
