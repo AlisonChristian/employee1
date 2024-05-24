@@ -51,4 +51,28 @@ class LeaveController extends Controller
             $overtime->save();
         
     }
+
+    public function store(Request $request)
+    {
+        // Validate the incoming request data
+        $request->validate([
+            'employee_id' => 'required',
+            'leave_type' => 'required',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+            'reason' => 'nullable|string',
+        ]);
+
+        // Create a new leave request
+        Leave::create([
+            'employee_id' => $request->input('employee_id'),
+            'leave_type' => $request->input('leave_type'),
+            'start_date' => $request->input('start_date'),
+            'end_date' => $request->input('end_date'),
+            'reason' => $request->input('reason'),
+        ]);
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Leave request submitted successfully.');
+    }
 }

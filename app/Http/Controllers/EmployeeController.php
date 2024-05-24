@@ -13,6 +13,12 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::all();
+        $employees = Employee::leftJoin('employee_ids','employees.id','=','employee_ids.emp_id')
+                            ->select(
+                                'employees.*',
+                                'employee_ids.employee_no',
+                            )
+                            ->get();
 
         return view('admin.employee', compact('employees'));
     }
@@ -58,7 +64,7 @@ class EmployeeController extends Controller
         }
 
         // Display success message
-        return redirect()->route('employees.index')->with('success', 'Employee record created successfully!');
+        return redirect()->route('employees')->with('success', 'Employee record created successfully!');
     }
 
     private function generateEmployeeId() {
@@ -82,35 +88,50 @@ class EmployeeController extends Controller
     }
 
 
-    public function update(Request $request, Employee $employee)
+    public function update(Request $request, $id)
     {
+        // Fetch the employee by ID
+        $employee = Employee::findOrFail($id);
+
+        // Validate the incoming request data
         $validatedData = $request->validate([
             'name' => 'required|string',
             'department' => 'required|string',
-            'email' => 'nullable|email|unique:employees,email,' .    $employee->id,
+            'email' => 'nullable|email|unique:employees,email,' . $employee->id,
             'phone_number' => 'nullable|string',
             'gender' => 'nullable|in:male,female,other',
             'address' => 'nullable|string',
         ]);
 
-        $employee->update([
-            'name' => $request->name,
-            'department' => $request->department,
-            'email' => $request->email,
-            'phone_number' => $request->phone_number,
-            'gender' => $request->gender,
-            'address' => $request->address,
-        ]);
+        // Update the employee
+        $employee->update($validatedData);
 
-        Alert::success('Success', 'Employee Record has been updated successfully!');
-
-        return redirect()->route('employees.index');
+        // Redirect with a success message
+        return redirect()->route('employees')->with('success', 'Employee updated successfully');
     }
 
-    public function destroy(Employee $employee)
+    public function destroy(Request $request, $id)
     {
-        $employee->delete();
-        Alert::success('Success', 'Employee Record has been deleted successfully!');
-        return redirect()->route('employees.index');
+            // Find the employee record by ID
+        $employee = Employee::find($id);
+
+        // Check if the employee exists
+        if ($employee) {
+            // Attempt to delete the employee record
+            try {
+                $deleted = $employee->delete();
+                if ($deleted) {
+                    return redirect()->route('employees')->with('success', 'Employee deleted successfully.');
+                } else {
+                    return redirect()->route('employees')->with('error', 'Failed to delete employee.');
+                }
+            } catch (\Exception $e) {
+                // Log the error for debugging
+                \Log::error($e);
+                return redirect()->route('employees')->with('error', 'An error occurred while deleting employee.');
+            }
+        } else {
+            return redirect()->route('employees')->with('error', 'Employee not found.');
+        }
     }
 }

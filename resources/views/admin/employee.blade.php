@@ -46,15 +46,15 @@
                                                         @foreach( $employees as $employee)
 
                                                         <tr>
-                                                            <td>{{$employee->id}}</td>
+                                                            <td>{{$employee->employee_no}}</td>
                                                             <td>{{$employee->name}}</td>
                                                             <td>{{$employee->department}}</td>
                                                             <td>{{$employee->email}}</td>
                                                             <td>{{$employee->created_at}}</td>
                                                             <td>
                         
-                                                                <a href="#edit{{$employee->name}}" data-toggle="modal" class="btn btn-success btn-sm edit btn-flat"><i class='fa fa-edit'></i></a>
-                                                                <a href="#delete{{$employee->name}}" data-toggle="modal" class="btn btn-danger btn-sm delete btn-flat"><i class='fa fa-trash'></i></a>
+                                                                <a href="#edit{{$employee->id}}" data-toggle="modal" class="btn btn-success btn-sm edit btn-flat"><i class='fa fa-edit'></i></a>
+                                                                <a href="#delete{{$employee->id}}" data-toggle="modal" class="btn btn-danger btn-sm delete btn-flat"><i class='fa fa-trash'></i></a>
                                                             </td>
                                                         </tr>
                                                         @endforeach
