@@ -51,6 +51,7 @@ return array(
     'App\\Models\\FingerDevices' => $baseDir . '/app/Models/FingerDevices.php',
     'App\\Models\\Latetime' => $baseDir . '/app/Models/Latetime.php',
     'App\\Models\\Leave' => $baseDir . '/app/Models/Leave.php',
+    'App\\Models\\Leaves' => $baseDir . '/app/Models/Leaves.php',
     'App\\Models\\Overtime' => $baseDir . '/app/Models/Overtime.php',
     'App\\Models\\Role' => $baseDir . '/app/Models/Role.php',
     'App\\Models\\Schedule' => $baseDir . '/app/Models/Schedule.php',

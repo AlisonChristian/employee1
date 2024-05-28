@@ -49,7 +49,7 @@
                             @csrf
                             @foreach ($employees as $employee)
 
-                                <input type="hidden" name="emp_id" value="{{ $employee->id }}">
+                                <input type="hidden" name="employee_id" value="{{ $employee->id }}">
 
                                 <tr>
                                     <td>{{ $employee->name }}</td>
@@ -70,12 +70,12 @@
                                             $date_picker = \Carbon\Carbon::createFromDate($today->year, $today->month, $i)->format('Y-m-d');
                                             
                                             $check_attd = \App\Models\Attendance::query()
-                                                ->where('emp_id', $employee->id)
+                                                ->where('employee_id', $employee->id)
                                                 ->where('attendance_date', $date_picker)
                                                 ->first();
                                             
                                             $check_leave = \App\Models\Leave::query()
-                                                ->where('emp_id', $employee->id)
+                                                ->where('employee_id', $employee->id)
                                                 ->where('leave_date', $date_picker)
                                                 ->first();
                                             
