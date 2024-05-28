@@ -12,13 +12,13 @@ class Employee extends Model
     use HasFactory, Notifiable;
     
     protected $fillable = [
-        'employee_id',
+        'id', 
         'name',
-        'department', 
-        'email', 
-        'phone_number', 
+        'department',
+        'email',
+        'phone_number',
         'gender',
-        'address'
+        'address',
     ];
 
     protected $hidden = [

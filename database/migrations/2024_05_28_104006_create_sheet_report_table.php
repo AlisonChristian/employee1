@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAttendancesTable extends Migration
+class CreateSheetReportTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateAttendancesTable extends Migration
      */
     public function up()
     {
-        Schema::create('attendances', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->uuid('employee_id');
+        Schema::create('sheet_report', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ class CreateAttendancesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attendances');
+        Schema::dropIfExists('sheet_report');
     }
 }

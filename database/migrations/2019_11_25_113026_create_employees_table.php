@@ -6,34 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateEmployeesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('employees', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->uuid('employee_id');
+            $table->increments('id'); // Set id to auto-increment
             $table->string('name');
             $table->string('department');
             $table->string('email')->nullable()->unique();
-            $table->string('phone_number')->nullable(); // Add phone_number column
-            $table->string('pin_code')->nullable();
-            $table->string('gender')->nullable(); // Add gender column
-            $table->string('address')->nullable(); // Add address column
-            $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
+            $table->string('phone_number')->nullable();
+            $table->enum('gender', ['male', 'female', 'other'])->nullable();
+            $table->string('address')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('employees');

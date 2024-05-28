@@ -15,35 +15,32 @@ class CheckController extends Controller
     }
 
     public function CheckStore(Request $request)
-    {
-        if (isset($request->attd)) {
-            foreach ($request->attd as $keys => $values) {
-                foreach ($values as $key => $value) {
-                    if ($employee = Employee::whereId(request('emp_id'))->first()) {
-                        if (
-                            !Attendance::whereAttendance_date($keys)
-                                ->whereEmp_id($key)
-                                ->whereType(0)
-                                ->first()
-                        ) {
-                            $data = new Attendance();
-                            
-                            $data->emp_id = $key;
-                            $emp_req = Employee::whereId($data->emp_id)->first();
-                            $data->attendance_time = date('H:i:s', strtotime($emp_req->schedules->first()->time_in));
-                            $data->attendance_date = $keys;
-                            
-                            $emps = date('H:i:s', strtotime($employee->schedules->first()->time_in));
-                            if (!($emps > $data->attendance_time)) {
-                                $data->status = 0;
-                           
-                            }
-                            $data->save();
+{
+    if (isset($request->attd)) {
+        foreach ($request->attd as $keys => $values) {
+            foreach ($values as $key => $value) {
+                if ($employee = Employee::find($key)) {
+                    if (
+                        !Attendance::where('attendance_date', $keys)
+                            ->where('emp_id', $key)
+                            ->where('type', 0)
+                            ->first()
+                    ) {
+                        $data = new Attendance();
+                        $data->emp_id = $key;
+                        $emp_req = Employee::find($key);
+                        $data->attendance_time = date('H:i:s', strtotime($emp_req->schedules->first()->time_in));
+                        $data->attendance_date = $keys;
+                        $emps = date('H:i:s', strtotime($employee->schedules->first()->time_in));
+                        if (!($emps > $data->attendance_time)) {
+                            $data->status = 0;
                         }
+                        $data->save();
                     }
                 }
             }
         }
+    }
         if (isset($request->leave)) {
             foreach ($request->leave as $keys => $values) {
                 foreach ($values as $key => $value) {
