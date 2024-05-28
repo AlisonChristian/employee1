@@ -15,7 +15,14 @@
     Auth::routes(['reset' => false]);
 
     Route::group(['middleware' => ['auth', 'Role'], 'roles' => ['admin']], function () {
-        Route::resource('/employees', '\App\Http\Controllers\EmployeeController');
+
+        // employee controller
+        Route::get('/employees', '\App\Http\Controllers\EmployeeController@index')->name('employees');
+        Route::delete('/employees/{id}', '\App\Http\Controllers\EmployeeController@destroy')->name('employees.destroy');
+        Route::post('/employees', '\App\Http\Controllers\EmployeeController@store')->name('employees.store');
+        Route::put('/employees/{id}', '\App\Http\Controllers\EmployeeController@update')->name('employees.update');
+        // end of employee controller
+
         Route::get('/attendance', '\App\Http\Controllers\AttendanceController@index')->name('attendance');
         Route::get('/latetime', '\App\Http\Controllers\AttendanceController@indexLatetime')->name('indexLatetime');
         Route::get('/leave', '\App\Http\Controllers\LeaveController@index')->name('leave');
@@ -54,7 +61,7 @@
     Route::post('/attendance/assign', '\App\Http\Controllers\AttendanceController@assign')->name('attendance.assign');
 
     Route::get('/leave/assign', function () {
-        return view('attendance_leave_login');
+        return view('add_leave');
     })->name('leave.login');
 
     Route::post('/leave/assign', '\App\Http\Controllers\LeaveController@assign')->name('leave.assign');
@@ -62,5 +69,6 @@
     Route::get('{any}', 'App\Http\Controllers\VeltrixController@index');
 
     Route::prefix('admin')->name('admin.')->group(function () {
-    Route::resource('leave', LeaveController::class);
-    });
+        Route::resource('leave', LeaveController::class);
+        Route::resource('sheet-report',SheetReportController::class);
+        });
