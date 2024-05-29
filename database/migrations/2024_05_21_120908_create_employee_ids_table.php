@@ -6,28 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateEmployeeIdsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('employee_ids', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->uuid('emp_id');
+            $table->increments('id'); // Ensure id is auto-increment
             $table->string('employee_no');
+            $table->unsignedInteger('emp_id');
             $table->timestamps();
+
+            $table->foreign('emp_id')->references('id')->on('employees')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('employee_ids');
     }
 }
+

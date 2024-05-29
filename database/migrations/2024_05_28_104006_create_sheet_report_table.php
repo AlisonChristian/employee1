@@ -15,6 +15,7 @@ class CreateSheetReportTable extends Migration
     {
         Schema::create('sheet_report', function (Blueprint $table) {
             $table->id();
+            
             $table->timestamps();
         });
     }

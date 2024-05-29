@@ -6,23 +6,18 @@ use Illuminate\Http\Request;
 use DateTime;
 use App\Models\User;
 use App\Models\Employee;
-use App\Models\Overtime;
-use App\Models\FingerDevices;
-use App\Helpers\FingerHelper;
 use App\Models\Leave;
-use App\Http\Requests\AttendanceEmp;
-use Illuminate\Support\Facades\Hash;
 
 class LeaveController extends Controller
 {
     public function index()
     {
-        return view('admin.leave')->with(['leaves' => Leave::all()]);
+        $leaves = Leave::all();
+        return view('admin.leave', compact('leaves'));
     }
 
     public function store(Request $request)
     {
-        // Validate the request data
         $request->validate([
             'employee_id' => 'required|exists:employees,id',
             'leave_type' => 'required|string',
@@ -31,8 +26,7 @@ class LeaveController extends Controller
             'reason' => 'nullable|string',
         ]);
 
-        // Create a new leave request
-        Leave::create([
+        $leave = Leave::create([
             'employee_id' => $request->employee_id,
             'leave_type' => $request->leave_type,
             'start_date' => $request->start_date,
@@ -41,24 +35,11 @@ class LeaveController extends Controller
             'status' => 'pending',
         ]);
 
-        return redirect()->route('admin.leave.index')->with('success', 'Leave request submitted successfully.');
+        if ($leave) {
+            return redirect()->route('admin.leave.index')->with('success', 'Leave request submitted successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Failed to submit leave request.');
+        }
     }
 
-    public function indexOvertime()
-    {
-        return view('admin.overtime')->with(['overtimes' => Overtime::all()]);
-    }
-
-    public static function overTimeDevice($att_dateTime, Employee $employee)
-    {
-        $attendance_time = new DateTime($att_dateTime);
-        $checkout = new DateTime($employee->schedules->first()->time_out);
-        $difference = $checkout->diff($attendance_time)->format('%H:%I:%S');
-
-        $overtime = new Overtime();
-        $overtime->emp_id = $employee->id;
-        $overtime->duration = $difference;
-        $overtime->overtime_date = date('Y-m-d', strtotime($att_dateTime));
-        $overtime->save();
-    }
 }

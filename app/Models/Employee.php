@@ -5,20 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits;
 
 class Employee extends Model
 {
     use HasFactory, Notifiable;
     
     protected $fillable = [
-        'id', 
+        'employee_id',
         'name',
-        'department',
-        'email',
-        'phone_number',
+        'department', 
+        'email', 
+        'phone_number', 
         'gender',
-        'address',
+        'address'
     ];
 
     protected $hidden = [

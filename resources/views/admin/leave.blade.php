@@ -84,7 +84,7 @@
                             <option value="sick">Sick Leave</option>
                             <option value="vacation">Vacation Leave</option>
                             <option value="emergency">Emergency Leave</option>
-                            <option value="emergency">Maternity Leave</option>
+                            <option value="maternity">Maternity Leave</option> <!-- Fixed the value for maternity leave -->
                         </select>
                     </div>
 

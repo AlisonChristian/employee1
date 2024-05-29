@@ -48,25 +48,22 @@
                                 </thead>
                                 <tbody>
 
-                                    @foreach ($attendances as $attendance)
-
-                                        <tr>
-                                            <td>{{ $attendance->attendance_date }}</td>
-                                            <td>{{ $attendance->emp_id }}</td>
-                                            <td>{{ $attendance->employee->name }}</td>
-                                            <td>{{ $attendance->attendance_time }}
-                                                @if ($attendance->status == 1)
-                                                    <span class="badge badge-success badge-pill float-right">On Time</span>
-                                                @else
-                                                    <span class="badge badge-danger badge-pill float-right">Late</span>
-                                                @endif
-                                            </td>
-
-                                            <td>{{ $attendance->employee->schedules->first()->time_in }} </td>
-                                            <td>{{ $attendance->employee->schedules->first()->time_out }}</td>
-                                        </tr>
-
-                                    @endforeach
+                                @foreach ($attendances as $attendance)
+                                    <tr>
+                                        <td>{{ $attendance->attendance_date }}</td>
+                                        <td>{{ $attendance->employee_id }}</td> <!-- Updated this line -->
+                                        <td>{{ $attendance->employee->name }}</td>
+                                        <td>{{ $attendance->attendance_time }}
+                                            @if ($attendance->status == 'active')
+                                                <span class="badge badge-success badge-pill float-right">On Time</span>
+                                            @else
+                                                <span class="badge badge-danger badge-pill float-right">Late</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ $attendance->employee->schedules->first()->time_in }}</td>
+                                        <td>{{ $attendance->employee->schedules->first()->time_out }}</td>
+                                    </tr>
+                                @endforeach
 
 
                                 </tbody>
